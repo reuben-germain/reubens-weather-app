@@ -7,3 +7,6 @@ function getWeather() {
         return;
     }
 }
+
+const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`; // This will throw an error because city and apiKey are not defined in this scope
+const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`; // This will throw an error because city and apiKey are not defined in this scope
