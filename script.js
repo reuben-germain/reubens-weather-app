@@ -73,3 +73,26 @@ function displayWeather(data) {
         showImage();
     }
 }
+
+function displayHourlyForecast(hourlyData) {
+    const hourlyForecastDiv = document.getElementById('hourly-forecast');
+    const next24Hours = hourlyData.slice(0, 8);
+
+    next24Hours.forEach(item => {
+        const date = new Date(item.dt * 1000);
+        const hour = date.getHours();
+        const temperature = Math.round(item.main.temp - 273.15);
+        const description = item.weather[0].description;
+        const iconCode = item.weather[0].icon;
+        const iconUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
+
+        const hourlyItemHtml = `
+        <div class="hourly-item">
+            <span>${hour}:00</span>
+            <img src="${iconUrl}" alt="${description}">
+            <span>${temperature}°C</span>
+        </div>`;
+
+        hourlyForecastDiv.innerHTML += hourlyItemHtml;
+    });
+}
