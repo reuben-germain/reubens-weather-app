@@ -10,3 +10,16 @@ function getWeather() {
 
 const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`; // This will throw an error because city and apiKey are not defined in this scope
 const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`; // This will throw an error because city and apiKey are not defined in this scope
+
+function getWeather() {
+
+    fetch(currentWeatherUrl)
+        .then((response) => response.json())
+        .then((data) => {
+            displayWeather(data);
+        })
+        .catch((error) => {
+            console.error('Error fetching current current weather data:', error);
+            alert('An error occurred while fetching current weather data. Please try again.');
+        });
+}
