@@ -58,5 +58,18 @@ function displayWeather(data) {
         const description = data.weather[0].description;
         const iconCode = data.weather[0].icon;
         const iconUrl = `http://openweathermap.org/img/w/${iconCode}@4x.png`;
+
+        const temperatureHTML = `<p>Temperature: ${temperature}°C</p>`;
+        
+        const weatherHtml = `
+        <p>City: ${cityName}</p>
+        <p>Weather: ${description}</p>`;
+
+        tempDivInfo.innerHTML = temperatureHTML;
+        weatherInfoDiv.innerHTML = weatherHtml;
+        weatherIcon.src = iconUrl;
+        weatherIcon.alt = description;
+
+        showImage();
     }
 }
