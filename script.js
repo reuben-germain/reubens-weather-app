@@ -23,3 +23,15 @@ function getWeather() {
             alert('An error occurred while fetching current weather data. Please try again.');
         });
 }
+
+function getWeather() {
+    fetch(forecastUrl)
+    .then((response) => response.json())
+    .then(data => {
+        displayHourlyForecast(data.list);
+    })
+    .catch((error) => {
+        console.error('Error fetching hourly forecast data:', error);
+        alert('An error occurred while fetching forecast data. Please try again.');
+    });
+}
